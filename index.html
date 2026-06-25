@@ -224,6 +224,101 @@ textarea.form-input{resize:vertical;}
 
 /* scrollable areas */
 .scroll-box{overflow-y:auto;max-height:260px;}
+
+/* ══════════════════════════════════════════════════
+   FULLY RESPONSIVE — PHONE · TABLET · DESKTOP
+   ══════════════════════════════════════════════════ */
+
+/* Mobile bottom nav bar */
+#mob-nav-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--slate);border-top:1px solid var(--border);padding:4px 0;padding-bottom:env(safe-area-inset-bottom,4px);}
+.mob-nav{display:flex;justify-content:space-around;}
+.mob-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 4px;cursor:pointer;min-width:46px;border:none;background:none;color:var(--text3);font-family:'Inter',sans-serif;transition:color .2s;}
+.mob-nav-item.active{color:var(--emerald);}
+.mob-nav-item .mni{font-size:18px;line-height:1;}
+.mob-nav-item .mnl{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;}
+
+/* More drawer (slides up from bottom) */
+#mob-drawer{position:fixed;bottom:0;left:0;right:0;z-index:500;background:var(--graphite);border-top:2px solid var(--border);border-radius:20px 20px 0 0;padding:12px 14px calc(14px + env(safe-area-inset-bottom,0px));transform:translateY(100%);transition:transform .3s ease;max-height:80vh;overflow-y:auto;}
+#mob-drawer.open{transform:translateY(0);}
+#mob-drawer-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:499;}
+#mob-drawer-bg.show{display:block;}
+.mob-drawer-handle{width:32px;height:3px;background:var(--border);border-radius:100px;margin:0 auto 14px;}
+.mob-drawer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.mob-drawer-item{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 6px;border-radius:12px;background:var(--slate);border:1px solid var(--border);cursor:pointer;text-align:center;font-family:'Inter',sans-serif;transition:all .2s;}
+.mob-drawer-item.active{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);}
+.mob-drawer-item .mdi-icon{font-size:22px;}
+.mob-drawer-item .mdi-label{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.3px;}
+.mob-drawer-item.active .mdi-label{color:var(--emerald);}
+
+/* Sidebar backdrop on tablet */
+#sidebar-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:98;}
+#sidebar-backdrop.show{display:block;}
+
+/* Mobile menu button in topbar */
+#mob-menu-btn{display:none;width:32px;height:32px;background:var(--graphite);border:1px solid var(--border);border-radius:8px;align-items:center;justify-content:center;cursor:pointer;font-size:16px;flex-shrink:0;}
+
+/* TABLET 600–1023px */
+@media(min-width:600px) and (max-width:1023px){
+  .sidebar{position:fixed!important;top:0;left:0;height:100%!important;z-index:99;transform:translateX(-100%);transition:transform .3s ease;width:240px!important;box-shadow:4px 0 24px rgba(0,0,0,.4);}
+  .sidebar.mob-open{transform:translateX(0);}
+  .sidebar-toggle{display:none!important;}
+  .nav-label,.sidebar-logo-text,.user-card{display:block!important;}
+  #mob-menu-btn{display:flex!important;}
+  .topbar{padding:0 16px;height:56px;}
+  .topbar-search input{width:140px;}
+  .topbar-live{display:none;}
+  .content{padding:16px;}
+  .two-col{grid-template-columns:1fr!important;}
+  .stat-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;}
+  .form-grid{grid-template-columns:1fr 1fr;}
+  .page-title{font-size:17px;}
+  .modal-lg{max-width:90vw;}
+}
+
+/* PHONE ≤599px */
+@media(max-width:599px){
+  .sidebar{display:none!important;}
+  .sidebar.mob-open{display:flex!important;position:fixed;top:0;left:0;height:100%;z-index:99;width:260px!important;transform:none;box-shadow:4px 0 24px rgba(0,0,0,.5);}
+  #app.visible{flex-direction:column;}
+  .main{padding-bottom:60px;}
+  #mob-nav-bar{display:block;}
+  #mob-menu-btn{display:flex!important;}
+  .topbar{padding:0 10px;height:50px;gap:8px;}
+  .topbar-title{font-size:12px;}
+  .topbar-sub,.topbar-search,.topbar-live{display:none!important;}
+  .topbar-btn{width:28px;height:28px;font-size:13px;}
+  .content{padding:10px;padding-bottom:6px;}
+  .stat-grid{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+  .stat-card{padding:11px;}
+  .stat-value{font-size:15px;}
+  .stat-label{font-size:9px;}
+  .stat-icon{width:28px;height:28px;font-size:13px;margin-bottom:7px;}
+  .stat-sub{font-size:10px;}
+  .two-col{grid-template-columns:1fr!important;gap:10px;}
+  .form-grid{grid-template-columns:1fr!important;}
+  .form-group.full{grid-column:1!important;}
+  .modal{border-radius:16px 16px 0 0;position:fixed;bottom:0;left:0;right:0;max-width:100%!important;max-height:94vh;margin:0;}
+  .modal-overlay{align-items:flex-end;padding:0;}
+  .page-title{font-size:15px;}
+  .page-sub{font-size:11px;}
+  .page-hdr{margin-bottom:12px;gap:8px;}
+  .btn{font-size:12px;padding:8px 11px;}
+  .btn-sm{font-size:10px;padding:4px 7px;}
+  .btn-icon{width:26px;height:26px;padding:4px;}
+  .card-hdr{padding:12px 13px;}
+  .chart-wrap{padding:10px 12px;}
+  .info-box{font-size:11px;padding:10px 12px;}
+  .share-code{font-size:15px;letter-spacing:2px;}
+  .splash-logo{width:76px;height:76px;}
+  .splash-title{font-size:20px;}
+  .splash-welcome-inner{font-size:12px;padding:8px 16px;}
+  .splash-bar-wrap{width:150px;}
+  thead th{padding:8px 9px;font-size:9px;}
+  tbody td{padding:8px 9px;font-size:11px;}
+  .tab-btn{padding:6px 10px;font-size:11px;}
+  .tbl-wrap{border-radius:8px;}
+}
+
 </style>
 </head>
 <body>
@@ -251,6 +346,36 @@ textarea.form-input{resize:vertical;}
 </div>
 
 <style>@keyframes spin1{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}</style>
+
+
+<!-- SIDEBAR BACKDROP (tablet) -->
+<div id="sidebar-backdrop" onclick="closeMobSidebar()"></div>
+
+<!-- MOBILE BOTTOM NAV -->
+<div id="mob-nav-bar">
+  <div class="mob-nav">
+    <button class="mob-nav-item active" id="mni-dashboard" onclick="nav('dashboard')"><span class="mni">📊</span><span class="mnl">Home</span></button>
+    <button class="mob-nav-item" id="mni-products" onclick="nav('products')"><span class="mni">📦</span><span class="mnl">Products</span></button>
+    <button class="mob-nav-item" id="mni-sales" onclick="nav('sales')"><span class="mni">🛒</span><span class="mnl">Sales</span></button>
+    <button class="mob-nav-item" id="mni-reports" onclick="nav('reports')"><span class="mni">📈</span><span class="mnl">Reports</span></button>
+    <button class="mob-nav-item" id="mni-more" onclick="openMobDrawer()"><span class="mni">☰</span><span class="mnl">More</span></button>
+  </div>
+</div>
+
+<!-- MOBILE MORE DRAWER -->
+<div id="mob-drawer-bg" onclick="closeMobDrawer()"></div>
+<div id="mob-drawer">
+  <div class="mob-drawer-handle"></div>
+  <div class="mob-drawer-grid">
+    <button class="mob-drawer-item" onclick="nav('inventory');closeMobDrawer()"><span class="mdi-icon">🏭</span><span class="mdi-label">Inventory</span></button>
+    <button class="mob-drawer-item" onclick="nav('cash');closeMobDrawer()"><span class="mdi-icon">💵</span><span class="mdi-label">Cash</span></button>
+    <button class="mob-drawer-item" onclick="nav('archive');closeMobDrawer()"><span class="mdi-icon">🗄️</span><span class="mdi-label">Archive</span></button>
+    <button class="mob-drawer-item" onclick="nav('notifications');closeMobDrawer()"><span class="mdi-icon">🔔</span><span class="mdi-label">Alerts</span></button>
+    <button class="mob-drawer-item" onclick="nav('settings');closeMobDrawer()"><span class="mdi-icon">⚙️</span><span class="mdi-label">Settings</span></button>
+    <button class="mob-drawer-item" id="mdi-share" onclick="nav('share');closeMobDrawer()"><span class="mdi-icon">🔗</span><span class="mdi-label">Share</span></button>
+  </div>
+  <button onclick="logout();closeMobDrawer()" style="margin-top:14px;width:100%;padding:12px;border-radius:10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#EF4444;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;">🚪 Logout</button>
+</div>
 
 <!-- TOASTS -->
 <div id="toasts"></div>
@@ -328,6 +453,7 @@ textarea.form-input{resize:vertical;}
         <div class="topbar-sub" id="topbarTime"></div>
       </div>
       <div class="topbar-spacer"></div>
+      <button id="mob-menu-btn" onclick="toggleMobSidebar()">☰</button>
       <div class="topbar-live"><div class="live-dot"></div><span id="topbarBiz"></span></div>
       <div class="topbar-search">
         <span class="si">🔍</span>
@@ -440,12 +566,21 @@ setTimeout(()=>{
 },4200);
 
 // ══════════════════════════════════════════════════
-//  AUTH
+//  AUTH — DEMO MODE (no login, straight into app)
 // ══════════════════════════════════════════════════
 function showLoginOrApp(){
   S=loadStore();
-  document.getElementById('login').style.display='flex';
+  // Auto-login as owner for demo — no password screen
+  const cred=CREDS['owner'];
+  currentUser={username:'owner',role:cred.role,name:cred.name,email:cred.email,lastLogin:new Date().toISOString()};
+  document.getElementById('login').style.display='none';
+  document.getElementById('app').classList.add('visible');
+  initApp();
 }
+
+// Login kept below — disabled for demo, re-enable for customer handover
+// by replacing showLoginOrApp() above with:
+//   document.getElementById('login').style.display='flex';
 function togglePw(){const i=document.getElementById('loginPass');i.type=i.type==='password'?'text':'password';}
 function handleLogin(){
   const u=document.getElementById('loginUser').value.trim().toLowerCase();
@@ -467,14 +602,11 @@ document.getElementById('loginPass').addEventListener('keydown',e=>{if(e.key==='
 document.getElementById('loginUser').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('loginPass').focus();});
 
 function logout(){
-  addAudit('LOGOUT','User',currentUser?.username||'',`${currentUser?.name||''} logged out`);
+  // In demo mode logout just re-enters the app as owner
   currentUser=null;
-  document.getElementById('app').classList.remove('visible');
-  document.getElementById('login').style.display='flex';
-  document.getElementById('loginUser').value='';
-  document.getElementById('loginPass').value='';
   Object.values(chartInstances).forEach(c=>{try{c.destroy();}catch(e){}});
   chartInstances={};
+  showLoginOrApp();
 }
 
 // ══════════════════════════════════════════════════
@@ -1706,6 +1838,66 @@ function delay(ms){return new Promise(r=>setTimeout(r,ms));}
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape')closeModal();
 });
+
+// ══════════════════════════════════════════════════
+//  MOBILE / RESPONSIVE NAVIGATION
+// ══════════════════════════════════════════════════
+function toggleMobSidebar(){
+  const sb=document.getElementById('sidebar');
+  const bd=document.getElementById('sidebar-backdrop');
+  const isOpen=sb.classList.contains('mob-open');
+  if(isOpen){closeMobSidebar();}
+  else{sb.classList.add('mob-open');bd.classList.add('show');}
+}
+function closeMobSidebar(){
+  const sb=document.getElementById('sidebar');
+  const bd=document.getElementById('sidebar-backdrop');
+  sb.classList.remove('mob-open');
+  bd.classList.remove('show');
+}
+function openMobDrawer(){
+  document.getElementById('mob-drawer').classList.add('open');
+  document.getElementById('mob-drawer-bg').classList.add('show');
+}
+function closeMobDrawer(){
+  document.getElementById('mob-drawer').classList.remove('open');
+  document.getElementById('mob-drawer-bg').classList.remove('show');
+}
+function updateMobNav(pageId){
+  // Update bottom nav active states
+  const mobIds=['dashboard','products','sales','reports'];
+  mobIds.forEach(id=>{
+    const el=document.getElementById('mni-'+id);
+    if(el)el.classList.toggle('active',id===pageId);
+  });
+  // More button active if current page is in drawer
+  const drawerPages=['inventory','cash','archive','notifications','settings','share'];
+  const moreBtn=document.getElementById('mni-more');
+  if(moreBtn)moreBtn.classList.toggle('active',drawerPages.includes(pageId));
+  // Update drawer items
+  document.querySelectorAll('.mob-drawer-item').forEach(el=>{
+    el.classList.remove('active');
+  });
+}
+// Close drawer on outside swipe down
+let touchStartY=0;
+document.addEventListener('touchstart',e=>touchStartY=e.touches[0].clientY,{passive:true});
+document.addEventListener('touchmove',e=>{
+  if(document.getElementById('mob-drawer').classList.contains('open')){
+    if(e.touches[0].clientY-touchStartY>60)closeMobDrawer();
+  }
+},{passive:true});
+// Close sidebar on nav (mobile)
+const _origNav=nav;
+// Patch nav to also close mobile sidebar and update mobile nav
+const _navPatched=function(pageId){
+  _origNav(pageId);
+  closeMobSidebar();
+  updateMobNav(pageId);
+};
+// Override nav globally
+window.nav=_navPatched;
+
 </script>
 </body>
 </html>
